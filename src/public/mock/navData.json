@@ -1,0 +1,252 @@
+{
+  "success": true,
+  "message": "执行成功~~",
+  "data": {
+    "topNav": [{
+        "id": 3,
+        "parentId": 1,
+        "permissionName": "首页",
+        "permissionIcon": "",
+        "permissionUrl": "/",
+        "children": []
+      },
+      {
+        "id": 6,
+        "parentId": 2,
+        "permissionName": "API市场",
+        "permissionIcon": "",
+        "permissionUrl":"/api/index/innerList",
+        "children": [{
+            "id": 8,
+            "parentId": 0,
+            "permissionName": "所有服务",
+            "permissionIcon": "allserver",
+            "permissionUrl": "/api/index",
+            "children": [{
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "内部API",
+                "permissionIcon": "",
+                "permissionUrl": "/api/index/innerList",
+                "children": []
+              },
+              {
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "外部API",
+                "permissionIcon": "",
+                "permissionUrl": "/api/index/outerList",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 8,
+            "parentId": 0,
+            "permissionName": "服务发布",
+            "permissionIcon": "serverpublish",
+            "permissionUrl": "/api/publish",
+            "children": []
+          },
+          {
+            "id": 8,
+            "parentId": 0,
+            "permissionName": "服务导入",
+            "permissionIcon": "serverimport",
+            "permissionUrl": "/api/import",
+            "children": []
+          },
+          {
+            "id": 8,
+            "parentId": 0,
+            "permissionName": "服务监控",
+            "permissionIcon": "servermonitor",
+            "permissionUrl": "/monitor/",
+            "children": [
+              {
+                "id": 8,
+                "parentId": 0,
+                "permissionName": "ESB监控",
+                "permissionIcon": "",
+                "permissionUrl": "/monitor/esb"
+              },
+              {
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "API监控",
+                "permissionIcon": "",
+                "permissionUrl": "/monitor/api",
+                "children": []
+              },
+              {
+               "id": 3,
+               "parentId": 1,
+               "permissionName": "微服务监控",
+               "permissionIcon": "",
+               "permissionUrl": "/monitor/micro",
+               "children": []
+             }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "parentId": 2,
+        "permissionName": "后台管理",
+        "permissionIcon": "",
+        "permissionUrl": "/back/listmanage/servicelist",
+        "children": [
+          {
+            "id": 8 ,
+            "parentId": 0,
+            "permissionName": "服务管理",
+            "permissionIcon": "servermanage",
+            "permissionUrl": "/back/serviceManage",
+            "children": [
+              {
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "服务列表",
+                "permissionIcon": "",
+                "permissionUrl": "/back/listmanage/servicelist",
+                "children": []
+              },
+              {
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "服务类目管理",
+                "permissionIcon": "",
+                "permissionUrl": "/back/serviceManage/typeManage",
+                "children": []
+              },
+              {
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "实名认证审批",
+                "permissionIcon": "",
+                "permissionUrl": "/back/servicemanage/authentication",
+                "children": []
+              },
+              {
+                "id": 3,
+                "parentId": 1,
+                "permissionName": "服务发布审批",
+                "permissionIcon": "",
+                "permissionUrl": "/back/servicemanage/publishapproval",
+                "children": []
+              }
+            ]
+          },
+          {
+            "id": 8 ,
+            "parentId": 0,
+            "permissionName": "服务统计",
+            "permissionIcon": "serverstat",
+            "permissionUrl": "/back/servicestat",
+            "children":[
+               {
+                "id": 8 ,
+                "parentId": 0,
+                "permissionName": "服务分类统计",
+                "permissionIcon": "",
+                "permissionUrl": "/back/servicestat/staffstat"
+               },
+               {
+                "id": 8 ,
+                "parentId": 0,
+                "permissionName": "服务计费统计",
+                "permissionIcon": "",
+                "permissionUrl": "/back/servicestat/billing"
+               },
+               {
+                "id": 8 ,
+                "parentId": 0,
+                "permissionName": "服务人员统计",
+                "permissionIcon": "",
+                "permissionUrl": "/back/servicestat/staff"
+               }
+            ]
+          },
+          {
+            "id": 7 ,
+            "parentId": 0,
+            "permissionName": "平台监控",
+            "permissionIcon": "platemonitor",
+            "permissionUrl": "/back/platformmonitoring",
+            "children":[{
+              "id": 17 ,
+              "parentId": 7,
+              "permissionName": "服务监控",
+              "permissionIcon": "",
+              "permissionUrl": "/back/platformmonitoring/servicemonitoring"
+            },{
+              "id": 17 ,
+              "parentId": 7,
+              "permissionName": "服务监控报警",
+              "permissionIcon": "",
+              "permissionUrl": "/back/platformmonitoring/servicealarm"
+            }]
+          },
+          {
+            "id": 8 ,
+            "parentId": 0,
+            "permissionName": "系统管理",
+            "permissionIcon": "systemmanage",
+            "permissionUrl": "/back/systemmanage",
+            "children":[
+              {
+                "id": 9,
+                "parentId": 8,
+                "permissionName": "角色权限管理",
+                "permissionIcon": "",
+                "permissionUrl": "/back/systemmanage/rolemanage",
+                "children": []
+              },
+              {
+                "id": 9,
+                "parentId": 8,
+                "permissionName": "权限管理",
+                "permissionIcon": "",
+                "permissionUrl": "/back/systemmanage/permissionmanage",
+                "children": []
+              },
+              {
+                "id": 9,
+                "parentId": 8,
+                "permissionName": "管理员操作审计",
+                "permissionIcon": "",
+                "permissionUrl": "/back/systemmanage/adminmanage",
+                "children": []
+              },
+              {
+                "id": 9,
+                "parentId": 8,
+                "permissionName": "技术支持管理",
+                "permissionIcon": "",
+                "permissionUrl": "/back/systemmanage/technologymanage",
+                "children": []
+              },
+              {
+                "id": 9,
+                "parentId": 8,
+                "permissionName": "其他通知配置",
+                "permissionIcon": "",
+                "permissionUrl": "/back/systemmanage/othersmanage",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "parentId": 1,
+        "permissionName": "论坛",
+        "permissionIcon": "",
+        "permissionUrl": "/forum/list",
+        "children": []
+      }
+    ]
+  }
+}

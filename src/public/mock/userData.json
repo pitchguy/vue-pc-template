@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "message": "执行成功~~",
+  "data":[
+    {
+      "id": 3,
+      "parentId": 1,
+      "permissionName": "发布管理",
+      "permissionIcon": "cloudonload",
+      "permissionUrl": "/user/publishManage/list",
+      "children": []
+    },{
+      "id": 3,
+      "parentId": 2,
+      "permissionName": "审批管理",
+      "permissionIcon": "order",
+      "permissionUrl": "/user/approvalManage/list",
+      "children": []
+    },{
+      "id": 3,
+      "parentId": 3,
+      "permissionName": "我的订阅",
+      "permissionIcon": "star",
+      "permissionUrl": "/user/mySubscription/list",
+      "children": []
+    }
+  ,{
+      "id": 3,
+      "parentId": 4,
+      "permissionName": "个人信息",
+      "permissionIcon": "account",
+      "permissionUrl": "/user/info",
+      "children": []
+    },{
+      "id": 3,
+      "parentId": 5,
+      "permissionName": "论坛解答",
+      "permissionIcon": "message4",
+      "permissionUrl": "/user/forum/list",
+      "children": []
+    },{
+      "id": 3,
+      "parentId": 6,
+      "permissionName": "消息管理",
+      "permissionIcon": "message",
+      "permissionUrl": "/user/message",
+      "children": []
+    },{
+      "id": 3,
+      "parentId": 7,
+      "permissionName": "权限转移",
+      "permissionIcon": "transfer",
+      "permissionUrl": "/user/permission",
+      "children": []
+    }
+  ]
+}

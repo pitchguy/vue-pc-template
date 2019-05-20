@@ -1,0 +1,13 @@
+
+export default {
+  mounted() {
+   
+
+    
+  },
+ 
+  methods:{
+  
+  }
+
+}

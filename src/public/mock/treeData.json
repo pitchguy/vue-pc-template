@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "message": "执行成功~~",
+  "data": [{
+      "key": "Phone",
+      "value": "12123",
+      "children": [{
+        "key": "phone_user",
+        "value": "用户手机",
+        "children": [{
+          "key": "phone_user1",
+          "value": "用户手机1"
+        },
+         {
+          "key": "phone_user3",
+          "value": "用户手机3"
+        }]
+      }]
+    },
+    {
+      "key": "Email",
+      "value": "",
+      "children": [{
+        "key": "Email_user",
+        "value": "用户手机",
+        "children": [{
+          "key": "Email_user1",
+          "value": "用户手机1"
+        }, {
+          "key": "Email_user3",
+          "value": "用户手机3"
+        }]
+      }]
+    }
+  ]
+}
