@@ -204,32 +204,10 @@ const http = {
           case 200:
             return response.json();
           case 401:
-            let ret=response.status=='401'?{success: false,data: []}:response.json();
-            
-            api.loginInfo({}).then(rest => {
-                const nData = rest.data;
-
-                var ExportForm = document.createElement("FORM");  
-                document.body.appendChild(ExportForm);  
-                ExportForm.method = "POST";
-                var newElement_o = document.createElement("input");  
-                newElement_o.setAttribute("name", "SAMLRequest");  
-                newElement_o.setAttribute("type", "hidden"); 
-                newElement_o.value = nData.samlBody;
-                ExportForm.append(newElement_o)
-                var newElement_t = document.createElement("input");  
-                newElement_t.setAttribute("name", "RelayState");  
-                newElement_t.setAttribute("type", "hidden"); 
-                newElement_t.value = nData.callbackUrl;
-                ExportForm.append(newElement_t)
-                ExportForm.action = nData.idmUrl; 
-                ExportForm.submit();
-            })
-          return ret;
+            return response
           case 500: 
-            this.commonAlert();
+            return response
           case 504:
-            this.commonAlert();
             return response
           default:
             return response
