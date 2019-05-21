@@ -1,9 +1,6 @@
 <template>  
     <div>
-        <div>这是home页面</div>
-        <div>
-            <router-view></router-view>
-        </div>
+        <div>这是home child页面</div>
     </div>
 </template>
 <script>
