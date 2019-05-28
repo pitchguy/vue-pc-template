@@ -2,6 +2,7 @@ const frontUrl ='/api/v1';
 const backUrl='/api/v2';
 
 export default {
+  viserChart: '/mock/inCome.json',
   /********用户登陆和用户初始信息*********/
   userLogin: `${frontUrl}/app/list-by-login-user`,//登陆验证
   userLogout: `${frontUrl}/auth/logout`,//退出登录

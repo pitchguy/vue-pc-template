@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import * as store from '@/store';
+
 import Tip403 from "@/pages/error/403";
 import Tip404 from '@/pages/error/404';
 import Tip500 from '@/pages/error/500';
-import MainLayout from '@/layout/m_layout';
 import CommonLayout from '@/layout/commonLayout';
 import Load from '../components/load';
 
@@ -12,11 +13,9 @@ import HomeChild from '@/pages/home/child'
 
 
 Vue.use(Router)
-export default new Router({
+const router = new Router({
     mode: 'history',
     routes: [{
-        
-    },{
         path: '/home',
         component: Home,
         children: [{
@@ -45,3 +44,14 @@ export default new Router({
         redirect: '/404'
     }]
 })
+
+// 有需要登陆认证的话 在vuex store中存值，进行判断
+// router.beforeEach((to, from, next) => {
+//     let isLogin = Boolean(store.state.user.id);
+//     if(!isLogin&&(to.path !== '/Login')){
+//         return next({ path: '/Login' })
+//     }
+//     next()
+// })
+
+export default router

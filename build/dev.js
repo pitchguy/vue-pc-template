@@ -9,7 +9,7 @@ const buildPath = path.resolve(rootPath, '../dist');
 module.exports = {
   mode: 'development',
   context: path.resolve(__dirname, '../src'),
-  devtool: 'eval-source-map',
+  devtool: 'cheap-eval-source-map',
   entry: {
     vendor: ['vue', 'vuex', 'vue-router'],
     app: [ `webpack-dev-server/client?http://${serve.host}:${serve.port}/`,'@babel/polyfill','./index.js'],
@@ -78,10 +78,10 @@ module.exports = {
     new webpack.DefinePlugin({
       __PRODUCTION: JSON.stringify(true)
     }),
-    new CopyWebpackPlugin([{
-      from: './public',
-      to: './'
-    }])
+    new CopyWebpackPlugin([
+      {from: './public',to: './'},
+      {from: path.resolve(__dirname, '../src/public/mock'),to:"./mock"}
+    ])
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.scss', '.css', '.vue'], //自动解析确定的扩展。覆盖原有扩展
@@ -106,10 +106,10 @@ module.exports = {
           target: 'http://172.16.2.184:8890/',
           changeOrigin: true
         },
-      '/saml-demo/': {
-          target: 'http://172.16.2.184:8890/api/v1/auth/login',
-          changeOrigin: true
-        }
+      // '/saml-demo/': {
+      //     target: 'http://172.16.2.184:8890/api/v1/auth/login',
+      //     changeOrigin: true
+      //   }
     },
     hotOnly: true,
   }

@@ -2,6 +2,10 @@
 import http from '@/utils/fetch'
 import reqUrl from './reqUrl'
 export default {
+  async viserChart(param){
+    let ret = await http.get(reqUrl.viserChart, param);
+    return ret;
+  },
   /********用户登陆和用户初始信息*********/
   async userLogin(param){
     let ret = await http.get(reqUrl.userLogin, param);

@@ -1,8 +1,8 @@
 {
-  "name": "dtux-vue",
-  "version": "1.1.2",
-  "description": "ko",
-  "author": "dtux",
+  "name": "vue-pc-template",
+  "version": "1.1.0",
+  "description": "a project created by chances",
+  "author": "chances",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/dev.js",
@@ -11,6 +11,7 @@
     "preview": "pushstate-server ./dist 1234"
   },
   "dependencies": {
+    "@antv/data-set": "^0.10.2",
     "@riophae/vue-treeselect": "^0.0.37",
     "awe-dnd": "^0.3.4",
     "echarts": "^4.2.0-rc.1",
@@ -23,7 +24,7 @@
     "mavon-editor": "^2.6.17",
     "moment": "^2.24.0",
     "quill": "^1.3.6",
-    "viser-vue": "^2.2.5",
+    "viser-vue": "^2.4.6",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.2.1",
     "vue-codemirror": "^4.0.5",

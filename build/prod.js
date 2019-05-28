@@ -118,7 +118,7 @@ module.exports = {
       filename: 'index.html',
       template: 'index.ejs',
       hash: false,
-      chunksSortMode: "none",
+      // chunksSortMode: "none",
       assets: {
         favicon: '/assets/imgs/favicon.ico',
         config_js: '/config/conf.prod.js'
@@ -128,14 +128,12 @@ module.exports = {
       __PRODUCTION: JSON.stringify(true)
     }),
     new CopyWebpackPlugin([
-      {
-        from:'./public',
-        to: './'
-      }
+      {from:'./public',to: './'},
+      {from: path.resolve(__dirname, '../src/public/mock'),to:"./mock"}
     ])
   ],
   resolve: {
-    extensions: ['.js', '.vue', '.json'], //自动解析确定的扩展。覆盖原有扩展
+    extensions: ['.js', '.jsx', '.scss', '.css', '.vue','json'], //自动解析确定的扩展。覆盖原有扩展
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
