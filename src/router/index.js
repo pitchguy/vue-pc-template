@@ -16,18 +16,28 @@ Vue.use(Router)
 const router = new Router({
     mode: 'history',
     routes: [{
-        path: '/home',
-        component: Home,
-        children: [{
-            path: 'child',
-            name: 'home-child',
-            component: HomeChild
-        }]
+        path: '/',
+        component: CommonLayout,
+        redirect: '/home',
+        children: [
+            {
+                path: '/home',
+                component: CommonLayout,
+                children: [{
+                    path: '/',
+                    component: Home,
+                },{
+                    path: 'child',
+                    component: HomeChild
+                }]
+            }
+        ]
     },
+    // {
+    //   path: '/',
+    //   redirect: '/home'
+    // },
     {
-      path: '/',
-      redirect: '/home'
-    },{
         path: '/403',
         name: 'tip403',
         component: Tip403

@@ -1,5 +1,6 @@
 <template>  
     <div>
+        <router-view></router-view>
         <div v-if="chartsData.viserData.length">
             <v-chart 
                 :forceFit="true" 
@@ -25,9 +26,8 @@
             </v-guide>
             </v-chart>
         </div>
-        <div>
-            <router-view></router-view>
-        </div>
+        <el-button type="primary" @click="buttonClick">123</el-button>
+        <el-button type="primary" @click="jumpRoute">跳转child</el-button>
     </div>
 </template>
 <script>
@@ -104,6 +104,22 @@ export default {
             API.viserChart({}).then(res => {
                 this.chartsData.viserData = res.data.chartData;
             })
+        },
+        buttonClick(){
+            const h = this.$createElement;
+            h('el-button', { style: 'color: teal'}, '这是提示文案')
+            let html = '';
+            for(let i=0;i<3;i++){
+               html+= h('el-button', { style: 'color: teal'}, '这是提示文案')
+            } 
+            this.$notify({
+                title: 'HTML 片段',
+                dangerouslyUseHTMLString: true,
+                message: html
+            })
+        },
+        jumpRoute(){
+            this.$router.push('/home/child')
         }
     }
 }
