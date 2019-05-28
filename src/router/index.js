@@ -17,8 +17,8 @@ const router = new Router({
     mode: 'history',
     routes: [{
         path: '/',
-        component: CommonLayout,
         redirect: '/home',
+        component: CommonLayout,
         children: [
             {
                 path: '/home',

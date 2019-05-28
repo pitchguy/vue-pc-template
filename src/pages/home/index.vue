@@ -8,7 +8,6 @@
                 :data="chartsData.viserData" 
                 :scale="scale" 
                 :padding="padding"
-                renderer="svg"
             >
             <v-tooltip />
             <v-axis />
