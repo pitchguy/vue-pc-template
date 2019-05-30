@@ -1,6 +1,5 @@
 <template>  
     <div>
-        <router-view></router-view>
         <div v-if="chartsData.viserData.length">
             <v-chart 
                 :forceFit="true" 
@@ -9,22 +8,47 @@
                 :scale="scale" 
                 :padding="padding"
             >
-            <v-tooltip />
-            <v-axis />
-            <v-line position="time*rate" />
-            <v-guide v-for="({ type, position,content, style, start, end, lineLength },index) in guides"
-                :type="type"
-                :position="position"
-                :content="content"
-                :v-style="style"
-                :start="start"
-                :end="end"
-                :lineLength="lineLength"
-                :key="index"
-            >
-            </v-guide>
+              <v-tooltip />
+              <v-axis />
+              <v-line position="time*rate" />
+              <v-guide v-for="({ type, position,content, style, start, end, lineLength },index) in guides"
+                  :type="type"
+                  :position="position"
+                  :content="content"
+                  :v-style="style"
+                  :start="start"
+                  :end="end"
+                  :lineLength="lineLength"
+                  :key="index"
+              >
+              </v-guide>
             </v-chart>
         </div>
+
+        <swiper :options="swiperOption">
+          <swiper-slide>
+            <div class="swiper-item">Slide 1</div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-item">Slide 2</div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-item">Slide 3</div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-item">Slide 4</div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-item">Slide 5</div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="swiper-item">Slide 6</div>
+          </swiper-slide>
+          <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
+          <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+          <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+        </swiper>
+
         <el-button type="primary" @click="buttonClick">123</el-button>
         <el-button type="primary" @click="jumpRoute">跳转child</el-button>
     </div>
@@ -32,6 +56,7 @@
 <script>
 import { cloneDeep } from 'lodash';
 import { viewPieOption } from "./option";
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import API from '@/api';
 
 const scale = [
@@ -83,6 +108,10 @@ const guides = [
 
 export default {
     name: "Home",
+    components: {
+      swiper,
+      "swiper-slide":swiperSlide
+    },
     data(){
         return {
             chartsData: {
@@ -92,7 +121,28 @@ export default {
             height: 440,
             padding: [50],
             guides,
-            name: 'free frozen'
+            name: 'free frozen',
+            swiperOption: {
+              effect: 'fade',
+              speed: 1000,
+              spaceBetween: 60,
+              keyboard: true,
+              autoplay: {
+                delay: 2000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                type: 'custom'
+              },
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+              },
+              loop: true
+            }
         }
     },
     mounted(){
@@ -124,5 +174,19 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  .swiper-button-prev,.swiper-button-next{ 
+    opacity : 0.3; 
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+  }
+  .swiper-button-prev:hover,.swiper-button-next:hover{
+    opacity : 1; 
+  }
 
+  .swiper-item{
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+    background: rgb(126, 119, 119);
+  }
 </style>

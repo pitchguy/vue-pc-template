@@ -1,9 +1,3 @@
-import axios from 'axios'
-const instance = axios.create({
-  // baseURL:'/api/v1', // api的前缀
-  // timeout: 5000 // 设置请求超市
-})
-
 // 请求拦截添加头部参数等
 instance.interceptors.request.use(config => {
   //config.headers['X-Token'] = getToken()

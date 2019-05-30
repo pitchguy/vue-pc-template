@@ -1,4 +1,3 @@
-//import http from '@/utils/http'
 import http from '@/utils/fetch'
 import reqUrl from './reqUrl'
 export default {

@@ -1,5 +1,4 @@
 import 'whatwg-fetch'
-import axios from 'axios';
 import api from '@/api/';
 
 const http = {
@@ -224,15 +223,15 @@ const http = {
         type: 'error'
     });
   },
-  exportFile(url,params){
-    return axios({
-        method: "get",
-        url: buildUrl(url,params), // 请求地址
-        responseType: "blob", // 表明返回服务器返回的数据类型
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-  }
+  // exportFile(url,params){
+  //   return axios({
+  //       method: "get",
+  //       url: buildUrl(url,params), // 请求地址
+  //       responseType: "blob", // 表明返回服务器返回的数据类型
+  //       headers: {
+  //           "Content-Type": "application/json"
+  //       }
+  //   })
+  // }
 }
 export default http;
