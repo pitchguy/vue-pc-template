@@ -18,17 +18,18 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .body-ct{
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:Center;
   position: relative;
   z-index: 0;
   width: 100%;
   height: 100vh;
 }
 .error-403{
-  margin:120px auto 60px;
-  display: block;
   height:230px;
 }
 .error-ct{
