@@ -44,11 +44,14 @@
           <swiper-slide>
             <div class="swiper-item">Slide 6</div>
           </swiper-slide>
-          <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
-          <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
-          <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+          <!-- <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div> -->
+          <div class="left slick_txt">
+            <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+          </div>
+          <div class="right slick_txt">
+            <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+          </div>
         </swiper>
-
         <el-button type="primary" @click="buttonClick">123</el-button>
         <el-button type="primary" @click="jumpRoute">跳转child</el-button>
     </div>
@@ -57,6 +60,8 @@
 import { cloneDeep } from 'lodash';
 import { viewPieOption } from "./option";
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import prevHover from '@public/assets/imgs/ban_prev_hover.png';
+import nextHover from '@public/assets/imgs/ban_next_hover.png';
 import API from '@/api';
 
 const scale = [
@@ -174,14 +179,50 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .swiper-button-prev,.swiper-button-next{ 
-    opacity : 0.3; 
+  .slick_txt{
+    width:30%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent;
+    transition: all 500ms ease;
+    -webkit-transition:all 500ms ease; 
+    background-repeat: no-repeat;
+    font-size: 0;
+    outline: none;
+    border:0;
+  }
+  .left{
+    left: 0;
+  }
+  .right{
+    right: 0;
+  }
+  .swiper-button-prev.swiper-button-white{
+    background-image: url('../../public/assets/imgs/ban_prev.png')
+  }
+  .swiper-button-next.swiper-button-white{
+    background-image: url('../../public/assets/imgs/ban_next.png')
+  }
+  .slick_txt:hover .swiper-button-prev,.slick_txt:hover .swiper-button-next{
+    opacity : 1; 
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
   }
-  .swiper-button-prev:hover,.swiper-button-next:hover{
-    opacity : 1; 
+  .swiper-button-prev,.swiper-button-next{ 
+    opacity : 0; 
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
   }
-
+  .swiper-button-prev:hover{
+    opacity : 1!important; 
+  }
+  .swiper-button-prev:hover.swiper-button-white{
+    background-image: url('../../public/assets/imgs/ban_prev_hover.png')
+  }
+  .swiper-button-next:hover{
+    opacity : 1!important; 
+  }
+  .swiper-button-next:hover.swiper-button-white{
+    background-image: url('../../public/assets/imgs/ban_next_hover.png')
+  }
   .swiper-item{
     width: 100%;
     height: 400px;
