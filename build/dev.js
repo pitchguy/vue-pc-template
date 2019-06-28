@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 const path = require('path');
 const serve =require('./serve');
@@ -81,7 +82,19 @@ module.exports = {
     new CopyWebpackPlugin([
       {from: './public',to: './'},
       {from: path.resolve(__dirname, '../src/public/mock'),to:"./mock"}
-    ])
+    ]),
+    new BundleAnalyzerPlugin({
+        analyzerMode: "server",
+        analyzerHost: "127.0.0.1",
+        analyzerPort: 8888, // 运行后的端口号
+        reportFilename: "report.html",
+        defaultSizes: "parsed",
+        openAnalyzer: true,
+        generateStatsFile: false,
+        statsFilename: "stats.json",
+        statsOptions: null,
+        logLevel: "info"
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.scss', '.css', '.vue'], //自动解析确定的扩展。覆盖原有扩展

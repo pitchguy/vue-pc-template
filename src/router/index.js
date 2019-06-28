@@ -8,8 +8,8 @@ import Tip500 from '@/pages/error/500';
 import CommonLayout from '@/layout/commonLayout';
 import Load from '../components/load';
 
-import Home from '@/pages/home';
-import HomeChild from '@/pages/home/child'
+const Home = () => import('@/pages/home');
+const HomeChild = () => import('@/pages/home/child');
 
 
 Vue.use(Router)
