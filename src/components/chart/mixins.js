@@ -4,7 +4,8 @@ export default {
   mounted() {
     this._resizeHandler = debounce(() => {
       if (this.chart) {
-        this.chart.resize()
+        if (this.chart.credits.textStr == "Highcharts.com") return
+        this.chart.resize() || null
       }
     }, 200)
 

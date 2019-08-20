@@ -9,7 +9,10 @@ import CommonLayout from "@/layout/commonLayout";
 import Load from "../components/load";
 
 const Home = () => import("@/pages/home");
+const shopGoods = () => import("@/pages/shopGoods");
 const HomeChild = () => import("@/pages/home/child");
+const Test1 = () => import("@/pages/testComp");
+const Test2 = () => import("@/pages/test2Comp");
 
 Vue.use(Router);
 const router = new Router({
@@ -33,13 +36,23 @@ const router = new Router({
               component: HomeChild
             }
           ]
+        },
+        {
+          path: "goods",
+          component: shopGoods
         }
       ]
     },
-    // {
-    //   path: '/',
-    //   redirect: '/home'
-    // },
+    {
+      path: "/test1",
+      name: "test1",
+      component: Test1
+    },
+    {
+      path: "/test2",
+      name: "test2",
+      component: Test2
+    },
     {
       path: "/403",
       name: "tip403",

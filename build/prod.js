@@ -7,67 +7,62 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 const buildPath = path.resolve(__dirname, '../dist');
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 module.exports = {
   mode: "production",
-  context:path.resolve(__dirname, '../src'),
+  context: path.resolve(__dirname, "../src"),
   entry: {
-    vendor: ['vue', 'vuex', 'vue-router','echarts'],
-    app:['@babel/polyfill','./index.js']
+    vendor: ["vue", "vuex", "vue-router", "echarts"],
+    app: ["@babel/polyfill", "./index.js"]
   },
   output: {
     path: buildPath,
     publicPath: "/",
     chunkFilename: "js/[name].[hash].js",
-    filename: "js/[name].[hash].js",
+    filename: "js/[name].[hash].js"
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: "vue-loader"
       },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        use: ['babel-loader?cacheDirectory']
+        use: ["babel-loader?cacheDirectory"]
       },
       {
         test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader"
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.(scss|sass)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader"
-        ]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
         test: /\.(jpg|png|gif|jpeg)$/,
-        use: 'file-loader?name=[name].[ext]'
+        use: "file-loader?name=[name].[ext]"
       },
       {
         test: /\.(eot|woff|svg|ttf|woff2|gif|appcache|webp)(\?|$)/,
-        use: 'file-loader?name=[name].[ext]'
+        use: "file-loader?name=[name].[ext]"
       }
     ]
   },
   node: {
-    fs: 'empty',
-    net: 'empty'
+    fs: "empty",
+    net: "empty"
   },
   performance: {
-    hints: false,
+    hints: false
   },
   optimization: {
     runtimeChunk: {
-      name: 'manifest'
+      name: "manifest"
     },
     minimize: true,
     noEmitOnErrors: true,
@@ -82,7 +77,7 @@ module.exports = {
             drop_debugger: true,
             drop_console: true
           }
-        },
+        }
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
@@ -95,14 +90,14 @@ module.exports = {
       name: true,
       cacheGroups: {
         vendor: {
-          chunks: 'initial',
-          name: 'vendor',
-          test: 'vendor'
+          chunks: "initial",
+          name: "vendor",
+          test: "vendor"
         },
         element: {
-          chunks: 'all',
-          name: 'element',
-          test: /[\\/]element-ui[\\/]/,
+          chunks: "all",
+          name: "element",
+          test: /[\\/]element-ui[\\/]/
         }
       }
     }
@@ -115,32 +110,32 @@ module.exports = {
       chunkFilename: "css/[name].[hash].css"
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.ejs',
+      filename: "index.html",
+      template: "index.ejs",
       hash: false,
       // chunksSortMode: "none",
       assets: {
-        favicon: '/assets/imgs/favicon.ico',
-        config_js: '/config/conf.prod.js'
+        favicon: "/assets/imgs/favicon.ico",
+        config_js: "/config/conf.prod.js",
       }
     }),
     new webpack.DefinePlugin({
       __PRODUCTION: JSON.stringify(true)
     }),
     new CopyWebpackPlugin([
-      {from:'./public',to: './'},
-      {from: path.resolve(__dirname, '../src/public/mock'),to:"./mock"}
+      { from: "./public", to: "./" },
+      { from: path.resolve(__dirname, "../src/public/mock"), to: "./mock" }
     ])
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.css', '.vue','json'], //自动解析确定的扩展。覆盖原有扩展
+    extensions: [".js", ".jsx", ".scss", ".css", ".vue", "json"], //自动解析确定的扩展。覆盖原有扩展
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      '@public': path.resolve(__dirname, '../src/public')
+      vue$: "vue/dist/vue.esm.js",
+      "@": resolve("src"),
+      "@public": path.resolve(__dirname, "../src/public")
     }
   },
   externals: {
-    'FRONT_CONF': 'FRONT_CONF'
+    FRONT_CONF: "FRONT_CONF"
   }
 };

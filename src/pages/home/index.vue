@@ -1,29 +1,8 @@
 <template>
   <div>
-    <div v-if="chartsData.viserData.length">
-      <v-chart
-        :forceFit="true"
-        :height="height"
-        :data="chartsData.viserData"
-        :scale="scale"
-        :padding="padding"
-      >
-        <v-tooltip/>
-        <v-axis/>
-        <v-line position="time*rate"/>
-        <v-guide
-          v-for="({ type, position,content, style, start, end, lineLength },index) in guides"
-          :type="type"
-          :position="position"
-          :content="content"
-          :v-style="style"
-          :start="start"
-          :end="end"
-          :lineLength="lineLength"
-          :key="index"
-        ></v-guide>
-      </v-chart>
-    </div>
+    <x-chart ref="simpleChart" :options="option1" :styles="{width:'100%',height:'500px'}"></x-chart>
+
+    <!-- <x-chart id="high" class="high" :option="option2"></x-chart> -->
 
     <swiper :options="swiperOption">
       <swiper-slide>
@@ -44,7 +23,7 @@
       <swiper-slide>
         <div class="swiper-item">Slide 6</div>
       </swiper-slide>
-      <!-- <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div> -->
+      
       <div class="left slick_txt">
         <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
       </div>
@@ -52,81 +31,31 @@
         <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
       </div>
     </swiper>
-    <el-button type="primary" @click="buttonClick">123</el-button>
+    <el-button @click="switchData">switch</el-button>
     <el-button type="primary" @click="jumpRoute">跳转child</el-button>
   </div>
 </template>
 <script>
 import { cloneDeep } from "lodash";
-import { viewPieOption } from "./option";
+import XChart from '@/components/highCharts';
+import { option1, option2 } from './option';
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import prevHover from "@public/assets/imgs/ban_prev_hover.png";
 import nextHover from "@public/assets/imgs/ban_next_hover.png";
 import API from "@/api";
 
-const scale = [
-  {
-    dataKey: "time",
-    range: [0, 1]
-  }
-];
-
-const guides = [
-  {
-    type: "dataMarker",
-    position: ["2014-01-03", 6.763],
-    content: "受稳健货币政策影响，协定存款利\n率居高不下,收益率达6.763%",
-    style: {
-      text: {
-        textAlign: "left"
-      }
-    }
-  },
-  {
-    type: "dataMarker",
-    position: ["2013-05-31", 2.093],
-    content: "余额宝刚成立时，并未达到目标资产\n配置，故收益率较低",
-    style: {
-      text: {
-        textAlign: "left"
-      }
-    }
-  },
-  {
-    type: "dataMarker",
-    position: ["2016-09-04", 2.321],
-    content: "受积极货币政策的影响，收益率降\n到历史最低2.321%",
-    style: {
-      text: {
-        textAlign: "left"
-      }
-    }
-  },
-  {
-    type: "dataRegion",
-    start: ["2016-12-02", 2.517],
-    end: ["2017-03-24", 3.83],
-    content: "宏观经济过热，受稳健货币政策影\n响，余额宝收益率随之上升",
-    lineLength: 50
-  }
-];
 
 export default {
   name: "Home",
   components: {
+    "x-chart": XChart,
     swiper,
     "swiper-slide": swiperSlide
   },
   data() {
     return {
-      chartsData: {
-        viserData: []
-      },
-      scale,
-      height: 440,
-      padding: [50],
-      guides,
-      name: "free frozen",
+      option1: option1,
+      option2: option2,
       swiperOption: {
         effect: "fade",
         speed: 1000,
@@ -151,29 +80,44 @@ export default {
     };
   },
   mounted() {
-    this.getChartData();
+    const data1 =  cloneDeep(option1);
+
+    data1.title.text = '2010 ~ 2016 年太阳能行业就业人员发展情况';
+    data1.subtitle.text = '数据来源：thesolarfoundation.com';
+    data1.series = [{
+          name: '安装，实施人员',
+          data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }, {
+          name: '工人',
+          data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+          name: '销售',
+          data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+          name: '项目开发',
+          data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+          name: '其他',
+          data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+    }];
+    data1.yAxis.title.text = '就业人数';   //数据
+    this.option1 = data1;
+    // this.getChartData();
+
   },
   methods: {
     getChartData(params) {
       API.viserChart({}).then(res => {
-        this.chartsData.viserData = res.data.chartData;
-      });
-    },
-    buttonClick() {
-      const h = this.$createElement;
-      h("el-button", { style: "color: teal" }, "这是提示文案");
-      let html = "";
-      for (let i = 0; i < 3; i++) {
-        html += h("el-button", { style: "color: teal" }, "这是提示文案");
-      }
-      this.$notify({
-        title: "HTML 片段",
-        dangerouslyUseHTMLString: true,
-        message: html
+        // this.chartsData.viserData = res.data.chartData;
       });
     },
     jumpRoute() {
       this.$router.push("/home/child");
+    },
+    switchData(){
+      const data2 =  cloneDeep(option2);
+
+      this.option1 = data2;
     }
   }
 };
