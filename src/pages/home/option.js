@@ -25,7 +25,7 @@ export const option1 = {
              pointStart: 2010
            }
         },
-        series: "",
+        series: [],
         responsive: {
             rules: [{
               condition: {

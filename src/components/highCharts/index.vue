@@ -1,5 +1,5 @@
 <template>
-  <div ref="chart" class="highcharts-container"  ></div>
+  <div ref="chart" class="highcharts-container"></div>
 </template>
 
 <script>
@@ -26,15 +26,13 @@ export default {
         },
         options: {},
     },
-    // props: ['options', 'styles'],
     name: 'highcharts',
     watch: {
-        option: {
+        options: {
             handler: function (oldVal, newVal) {
-                console.log(111)
                 this.initChart()
             },
-            deep: false
+            deep: true
         }
     },
     data(){
@@ -59,7 +57,7 @@ export default {
             this.$refs.chart.style.height = (height || '400px');
 
             this.$nextTick(() => {
-                this.chart = new Highcharts.Chart(this.$refs.chart, this.options)
+                this.chart = new Highcharts.Chart(this.$refs.chart, { ...this.options })
             })
         }
     }
