@@ -2,7 +2,7 @@
 import localDb from '@/utils/localDb';
 
 export default{
-  //实现千位分割符号
+  //千位分割符号
   numFormat(num){
     if(isUndefined(num)){
       return ''
@@ -20,7 +20,7 @@ export default{
     if((pageTotal%pageSize - 1)==0){
         //当前页面没数据
         if(currentPage==1){
-          //已经是最后一页则返回1
+          //最后一页则返回1
           return 1
         }else{
           //不是最后一页则当前页码减1
@@ -30,34 +30,5 @@ export default{
       //当前页面还有数据
       return currentPage
     }
-  },
-  //权限判断
-  permCheck(code){
-    let type = '';
-    
-    if(isEmpty(localDb.get('usInfo').permCodes)){
-        type = false;
-    }else{
-      if(localDb.get('usInfo').permCodes.indexOf(code)<0){
-        type = false;
-      }else{
-        type = true;
-      }
-    }
-    return type;
-  },
-  permChecks(code,data){
-    let type = '';
-    
-    if(isEmpty(data.permCodes)){
-        type = false;
-    }else{
-      if(data.permCodes.indexOf(code)<0){
-        type = false;
-      }else{
-        type = true;
-      }
-    }
-    return type;
   }
 }

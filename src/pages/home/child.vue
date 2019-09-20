@@ -14,6 +14,9 @@
       <i class="el-icon-circle-plus-outline" @click="add" />
       <i class="el-icon-remove-outline" @click=remove(child.childNum) />
     </div>
+    <!-- <iframe src="http://127.0.0.1:8089/" width="600%" height="400" />
+    <object data="http://127.0.0.1:8089/" width="600" height="400" />
+    <embed src="http://127.0.0.1:8089/" width="600" height="400" /> -->
   </div>
 </template>
 <script>
