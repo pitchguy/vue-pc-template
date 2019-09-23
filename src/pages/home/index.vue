@@ -1,6 +1,5 @@
 <template>
   <div>
-    <img class="error-403" :src="page403" alt="403"/>
     <el-button @click="switchData">switch</el-button>
     <el-button type="primary" @click="jumpRoute">跳转child</el-button>
 
@@ -38,7 +37,6 @@
   </div>
 </template>
 <script>
-import page403 from '@public/assets/imgs/pic_403.png';
 import { cloneDeep } from "lodash";
 import XChart from '@/components/highCharts';
 import { option1, option2 } from './option';
@@ -57,7 +55,6 @@ export default {
   },
   data() {
     return {
-      page403,
       option1,
       option2,
       swiperOption: {
