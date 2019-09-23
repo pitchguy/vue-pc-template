@@ -1,5 +1,8 @@
 <template>
   <div>
+    <el-button @click="switchData">switch</el-button>
+    <el-button type="primary" @click="jumpRoute">跳转child</el-button>
+
     <x-chart ref="simpleChart" :options="option1" :styles="{width:'100%',height:'500px'}"></x-chart>
 
     <!-- <x-chart id="high" class="high" :option="option2"></x-chart> -->
@@ -31,8 +34,6 @@
         <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
       </div>
     </swiper>
-    <el-button @click="switchData">switch</el-button>
-    <el-button type="primary" @click="jumpRoute">跳转child</el-button>
   </div>
 </template>
 <script>
@@ -79,15 +80,14 @@ export default {
       }
     };
   },
+  computed: {
+  },
   mounted() {
     const data1 =  cloneDeep(option1);
 
     this.getChartData(data1)
   },
   methods: {
-    reSet(){
-
-    },
     getChartData(originData) {
       API.viserChart({}).then(res => {
         const { title, subtitle, yAxis, series } = res.data;

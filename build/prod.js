@@ -116,7 +116,7 @@ module.exports = {
       // chunksSortMode: "none",
       assets: {
         favicon: "/assets/imgs/favicon.ico",
-        config_js: "/config/conf.prod.js",
+        config_js: "/config/conf.prod.js"
       }
     }),
     new webpack.DefinePlugin({
@@ -136,6 +136,11 @@ module.exports = {
     }
   },
   externals: {
-    FRONT_CONF: "FRONT_CONF"
+    FRONT_CONF: "FRONT_CONF",
+    vue: "Vue",
+    echarts: "echarts",
+    lodash: "_",
+    "element-ui": "ELEMENT",
+    "vue-router": "VueRouter"
   }
 };

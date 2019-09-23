@@ -16,7 +16,6 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import "@babel/polyfill";
 
-
 Vue.use(Element, {size: 'small'}) // set element-ui default size
 Vue.use(VueQuillEditor)
 Vue.use(VueDND);

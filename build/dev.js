@@ -104,6 +104,14 @@ module.exports = {
       "@nm": path.resolve(__dirname, "../node_modules")
     }
   },
+  externals: {
+    FRONT_CONF: "FRONT_CONF",
+    vue: "Vue",
+    echarts: "echarts",
+    lodash: "_",
+    "element-ui": "ELEMENT",
+    "vue-router": "VueRouter"
+  },
   devServer: {
     disableHostCheck: true,
     contentBase: require("path").join(__dirname, "dist"),
