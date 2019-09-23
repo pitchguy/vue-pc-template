@@ -44,12 +44,30 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
-        test: /\.(jpg|png|gif|jpeg)$/,
-        use: "file-loader?name=[name].[ext]"
+        test: /\.(jpg|png|jpeg|svg|gif)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "./assets/imgs",
+            }
+          }
+        ]
+        // use: "file-loader?name=[name].[ext]"
       },
       {
         test: /\.(eot|woff|svg|ttf|woff2|gif|appcache|webp)(\?|$)/,
-        use: "file-loader?name=[name].[ext]"
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "./assets/fonts",
+            }
+          }
+        ]
+        // use: "file-loader?name=[name].[ext]"
       }
     ]
   },
