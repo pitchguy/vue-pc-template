@@ -50,7 +50,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "./assets/imgs",
+              outputPath: "./assets/imgs"
             }
           }
         ]
@@ -63,7 +63,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "./assets/fonts",
+              outputPath: "./assets/fonts"
             }
           }
         ]
@@ -91,10 +91,10 @@ module.exports = {
         sourceMap: false,
         uglifyOptions: {
           compress: {
-            warnings: false,
             drop_debugger: true,
             drop_console: true
-          }
+          },
+          warnings: false
         }
       }),
       new OptimizeCSSAssetsPlugin({})
