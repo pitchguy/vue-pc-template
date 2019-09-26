@@ -1,8 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
+const WebpackBar = require("webpackbar");
 const path = require('path');
 const serve =require('./serve');
 const rootPath = path.resolve(__dirname, '../');
@@ -63,6 +64,11 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new WebpackBar({
+      profile: true,
+      color: "#b37feb",
+      reporter: "profile"
+    }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "index.ejs",

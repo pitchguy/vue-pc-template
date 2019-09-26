@@ -3,8 +3,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const WebpackBar = require("webpackbar");
 const path = require('path');
 const buildPath = path.resolve(__dirname, '../dist');
 
@@ -102,7 +104,7 @@ module.exports = {
     splitChunks: {
       minSize: 30000,
       maxSize: 3000000,
-      minChunks: 2,
+      minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       name: true,
@@ -122,7 +124,13 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new HardSourceWebpackPlugin(), //webpack 5.0内置
     new webpack.optimize.OccurrenceOrderPlugin(true),
+    new WebpackBar({
+      profile: true,
+      color: "#b37feb",
+      reporter: "profile"
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[hash].css",
       chunkFilename: "css/[name].[hash].css"

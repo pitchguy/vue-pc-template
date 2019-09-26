@@ -57,6 +57,7 @@ export default {
     return {
       option1,
       option2,
+      num: "",
       swiperOption: {
         effect: "fade",
         speed: 1000,
